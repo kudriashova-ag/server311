@@ -1,5 +1,6 @@
 import express from 'express'
 import dbConnection from './db/db.mjs'
+import cors from 'cors'
 
 import { createArticle, deleteArticle, getArticle, getArticles, updateArticle } from './controllers/ArticleController.mjs'
 const app = express()
@@ -9,6 +10,7 @@ dbConnection.on('connected', () => console.log('Connected to DB'))
 dbConnection.on('error', () => console.log('Connected DB error'))
 
 app.use(express.json())
+app.use(cors())
 
 
 app.get('/', (req, res) => {
