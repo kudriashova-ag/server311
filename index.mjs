@@ -3,6 +3,7 @@ import dbConnection from './db/db.mjs'
 import cors from 'cors'
 
 import { createArticle, deleteArticle, getArticle, getArticles, updateArticle } from './controllers/ArticleController.mjs'
+import { login, register } from './controllers/AuthController.mjs'
 const app = express()
 const port = 5000
 
@@ -22,6 +23,10 @@ app.get('/articles/:id', getArticle)
 app.post('/articles', createArticle)
 app.put('/articles/:id', updateArticle)
 app.delete('/articles/:id', deleteArticle)
+
+
+app.post('/register', register)
+app.post('/login', login)
 
 
 app.listen(port, () => {
